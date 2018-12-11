@@ -1,3 +1,7 @@
+https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
+
+
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 var prefix = "$"// البرفكس هنا
@@ -33,27 +37,16 @@ client.on('ready', () => {
 });///الكود فوق ذي
  
 
-client.on('message', msg => {
-
-    if (msg.content == '$join') {
-        if (msg.member.voiceChannel) {
-
-     if (msg.member.voiceChannel.joinable) {
-         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
-     }
-    }
-}
-})
-client.on('ready', () => { //code bot not leave room voice //Bot Is Online
-    client.channels.get("519493546609475604").join(); //by : Toxic Codes
-    });
+client.on('ready',async () => {
+  client.channels.find(ch => ch.id === "519493546609475604" && ch.type === 'voice').join();
+}); 
  
 
 client.on('guildMemberAdd', member => {
 const mohamed= member.guild.channels.get("519486679468474369");
 if(!mohamed) return;
 if(mohamed) {
-setTimeout(() => mohamed.send(`Welcome To TH Server`), 4000)        
+setTimeout(() => mohamed.send(`Welcome`), 4000)        
 }
 });
 
@@ -101,8 +94,9 @@ client.on('message', message => {
 
 
 
-client.login(process.env.TOKEN);// لا تغير فيها شيء
-client2.login(process.env.TOKEN2);// لا تغير فيها شيء
-client3.login(process.env.TOKEN3);// لا تغير فيها شيء
-client4.login(process.env.TOKEN4);// لا تغير فيها شيء
-client5.login(process.env.TOKEN5);// لا تغير فيها شيء
+
+client.login(process.env.BOT_TOKEN);
+client.login2(process.env.BOT_TOKEN2);
+client.login3(process.env.BOT_TOKEN3);
+client.login4(process.env.BOT_TOKEN4);
+client.login5(process.env.BOT_TOKEN5);
